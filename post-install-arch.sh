@@ -84,18 +84,6 @@ pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
-## install gnome
-# pacman -S xorg --noconfirm
-pacman -S gnome --noconfirm
-
-## install display manager
-pacman -S lxdm --noconfirm
-pacman -S ttf-dejavu --noconfirm
-
-## enable services
-systemctl enable lxdm.service
-systemctl enable NetworkManager.service
-
 ## add user
 useradd -m ${user_name}
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | passwd ${user_name}
