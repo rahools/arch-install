@@ -17,6 +17,7 @@ host_name=''
 root_password=''
 user_password=''
 
+# -d /dev/vda -t Asia/Kolkata -n rahools -h archtest -p 2104 -u 2104
 while getopts 't:n:h:p:u:' flag; do
   case "${flag}" in
     d) install_drive="${OPTARG}" ;;
@@ -84,7 +85,7 @@ grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 ## install gnome
-pacman -S xorg --noconfirm
+# pacman -S xorg --noconfirm
 pacman -S gnome --noconfirm
 
 ## install display manager
@@ -106,7 +107,3 @@ usermod -aG wheel,video,audio ${user_name}
 ## manage sudoers
 pacman -S sudo --noconfirm
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-
-## reboot
-exit 
-reboot
